@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Bot Settings</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        h1 { color: #333; }
+        label { display: block; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>Discord Bot Settings</h1>
+
+    <h2>Ping Settings</h2>
+    <label><input type="checkbox" name="ping" value="everyone"> @everyone</label>
+    <label><input type="checkbox" name="ping" value="here"> @here</label>
+    <label>Role: <input type="text" name="role" placeholder="Type a role name..."></label>
+    <label>Member: <input type="text" name="member" placeholder="Type a member name..."></label>
+
+    <h2>Select Anime</h2>
+    <input type="text" id="anime-input" placeholder="Type anime name..." oninput="suggestAnime()">
+    <div id="anime-suggestions"></div>
+
+    <button onclick="saveSettings()">Save Settings</button>
+
+    <script>
+        function suggestAnime() {
+            const input = document.getElementById("anime-input").value;
+            const suggestions = ["Naruto", "One Piece", "Attack on Titan"]; // Example suggestions
+            const filtered = suggestions.filter(anime => anime.toLowerCase().includes(input.toLowerCase()));
+
+            const suggestionBox = document.getElementById("anime-suggestions");
+            suggestionBox.innerHTML = "";
+            filtered.forEach(anime => {
+                const div = document.createElement("div");
+                div.textContent = anime;
+                suggestionBox.appendChild(div);
+            });
+        }
+
+        function saveSettings() {
+            // Implement logic to save settings (e.g., sending data to your server or Discord)
+            console.log("Settings saved.");
+            alert("Settings saved!"); // Notify the user
+        }
+    </script>
+</body>
+</html>
